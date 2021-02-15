@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Materials</title>
+</head>
+<body>
+<!--с чем работаем-->
+<div th:switch="${materials}">
+    <h2 th:case="null">No material found!</h2>
+    <div th:case="*">
+        <h2>Materials</h2>
+
+        <!--таблица-->
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>Color</th>
+                <th>Count</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="material : ${materials}">
+                <td th:text="${material.id}"></td>
+                <td th:text="${material.materialType}"></td>
+                <td th:text="${material.color}"></td>
+                <td th:text="${material.materialsCount}"></td>
+                <td><a th:href="@{material-update/{id}(id=${material.id})}">Edit</a></td>
+<!--                <td><a th:href="@{material-delete/{id}(id=${material.id})}">Delete</a></td>-->
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/material-create">Create material</a></p>
+</div>
+</body>
+</html>

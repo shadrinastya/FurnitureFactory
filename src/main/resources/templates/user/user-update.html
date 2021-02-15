@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<meta charset="UTF-8">
+<title>Create user</title>
+</head>
+<body>
+<!--Метод post по ссылке и передаем объект-->
+<form action="#" th:action="@{/user-update}" th:object="${user}" method="post">
+
+
+<!--    readonly означает, что id не может меняться-->
+    <label for="id">ID</label>
+    <input readonly type="number" th:field="*{id}" id="id" placeholder="ID">
+    <br/>
+
+    <label for="name">Name</label>
+    <input type="text" th:field="*{name}" id="name" placeholder="Name">
+    <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">текст, кот.никогда не увидим</div>
+    <br/>
+
+    <label for="email">email</label>
+    <input type="text" th:field="*{email}" id="email" placeholder="email">
+    <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">we won't see of this text</div>
+    <br/>
+
+<!--    при нажатии кнопки метод post(верхняя строка формы) должен выполниться-->
+    <input type="submit" value="Update User">
+</form>
+</body>
+</html>

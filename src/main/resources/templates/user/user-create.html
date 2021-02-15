@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Create user</title>
+</head>
+<body>
+
+<form action="#"  th:action="@{/user-create}" th:object="${user}" method="post">
+
+    <label for="name">name</label>
+    <input type="text" th:field="*{name}" id="name" placeholder="name">
+    <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">текст, кот.никогда не увидим</div>
+
+    <label for="email">email</label>
+    <input type="text" th:field="*{email}" id="email" placeholder="email">
+    <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">we won't see of this text</div>
+
+
+    <input type="submit" value="Create User">
+</form>
+</body>
+</html>

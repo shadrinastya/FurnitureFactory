@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<meta charset="UTF-8">
+<title>Create user</title>
+</head>
+<body>
+<!--Метод post по ссылке и передаем объект-->
+<form action="#" th:action="@{/material-update}" th:object="${material}" method="post">
+
+
+<!--    readonly означает, что id не может меняться-->
+    <label for="id">ID</label>
+    <input readonly type="number" th:field="*{id}" id="id" placeholder="ID">
+    <br/>
+
+
+    <label>Type</label>
+    <input readonly type="text" th:field="*{materialType}" id="materialType" placeholder="materialType">
+    <br/>
+
+    <label>Color</label>
+    <input readonly type="text" th:field="*{Color}" id="color" placeholder="color">
+
+    <br/>
+
+    <label for="materialsCount">Count</label>
+    <input type="number" th:field="*{materialsCount}" id="materialsCount" placeholder="Count">
+   <!-- <div style="color:red" th:if="${#fields.hasErrors('materialsCount')}" th:errors="*{materialsCount}">текст, кот.никогда не увидим</div>-->
+    <br/>
+
+<!--    при нажатии кнопки метод post(верхняя строка формы) должен выполниться-->
+    <input type="submit" value="Update material">
+</form>
+</body>
+</html>
