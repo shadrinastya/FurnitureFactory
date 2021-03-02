@@ -1,12 +1,14 @@
-package com.example.springBoot.service;
+package com.example.springBoot.service.sheetMaterial;
 
 import com.example.springBoot.model.material.SheetMaterial;
-import com.example.springBoot.repository.SheetMaterialRepository;
+import com.example.springBoot.repository.sheetMaterial.SheetMaterialBaseRepository;
+import com.example.springBoot.repository.sheetMaterial.SheetMaterialRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-public class SheetMaterialServiceImpl <T extends SheetMaterial, R extends SheetMaterialRepository <T>> implements SheetMaterialService<T> {
+public class SheetMaterialServiceImpl <T extends SheetMaterial, R extends SheetMaterialBaseRepository<T>> implements SheetMaterialService<T> {
 
 
     private final R repository;

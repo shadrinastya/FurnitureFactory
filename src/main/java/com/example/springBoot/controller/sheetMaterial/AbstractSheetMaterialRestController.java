@@ -1,7 +1,8 @@
-package com.example.springBoot.controller;
+package com.example.springBoot.controller.sheetMaterial;
 
 import com.example.springBoot.model.material.SheetMaterial;
-import com.example.springBoot.service.SheetMaterialService;
+import com.example.springBoot.service.sheetMaterial.SheetMaterialService;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

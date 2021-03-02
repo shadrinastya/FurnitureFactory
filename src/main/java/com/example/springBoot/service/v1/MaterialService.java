@@ -1,8 +1,9 @@
-package com.example.springBoot.service;
+package com.example.springBoot.service.v1;
 
 
 import com.example.springBoot.model.v1.Material;
-import com.example.springBoot.repository.MaterialRepository;
+import com.example.springBoot.repository.v1.MaterialRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

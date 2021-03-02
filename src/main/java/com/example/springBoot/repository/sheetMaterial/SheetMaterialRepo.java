@@ -1,4 +1,4 @@
-package com.example.springBoot.repository;
+package com.example.springBoot.repository.sheetMaterial;
 
 import com.example.springBoot.model.material.SheetMaterial;
 import com.example.springBoot.model.enumClasses.Color;

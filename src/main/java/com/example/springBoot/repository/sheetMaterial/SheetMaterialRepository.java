@@ -1,9 +1,10 @@
-package com.example.springBoot.repository;
+package com.example.springBoot.repository.sheetMaterial;
 
+import org.springframework.stereotype.Repository;
+
+import com.example.springBoot.model.material.Chipboard;
 import com.example.springBoot.model.material.SheetMaterial;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.NoRepositoryBean;
 
-@NoRepositoryBean
-public interface SheetMaterialRepository <T extends SheetMaterial> extends JpaRepository<T, Integer>, SheetMaterialRepo<T> {
+@Repository
+public interface SheetMaterialRepository extends SheetMaterialBaseRepository<SheetMaterial>  {
 }

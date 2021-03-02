@@ -1,4 +1,4 @@
-package com.example.springBoot.service;
+package com.example.springBoot.service.sheetMaterial;
 
 import com.example.springBoot.model.material.SheetMaterial;
 
