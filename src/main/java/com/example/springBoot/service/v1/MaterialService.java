@@ -1,7 +1,7 @@
 package com.example.springBoot.service;
 
 
-import com.example.springBoot.model.Material;
+import com.example.springBoot.model.v1.Material;
 import com.example.springBoot.repository.MaterialRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,7 +33,6 @@ public class MaterialService {
 
         materialRepository.save(newMaterial);
     }
-
 
     public List<Material> findAll() {
         return materialRepository.findAll();

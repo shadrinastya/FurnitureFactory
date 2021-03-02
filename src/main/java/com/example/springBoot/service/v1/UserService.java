@@ -1,6 +1,6 @@
 package com.example.springBoot.service;
 
-import com.example.springBoot.model.User;
+import com.example.springBoot.model.v1.User;
 import com.example.springBoot.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +23,7 @@ public class UserService {
     }
 
     public User findById(int id){
-        return userRepository.getOne(id);
+        return userRepository.getOne(id); //it's method use a lazy load operation. It's can using with @JsonIgnoreProperties({"hibernateLazyInitializer"})(class Material)
     }
 
     public List<User> findAll(){

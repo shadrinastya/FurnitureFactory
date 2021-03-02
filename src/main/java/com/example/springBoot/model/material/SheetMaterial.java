@@ -1,21 +1,18 @@
 package com.example.springBoot.model;
 
-
 import com.example.springBoot.model.enumClasses.Color;
 import com.example.springBoot.model.enumClasses.MaterialType;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
-import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@JsonIgnoreProperties({"hibernateLazyInitializer"})
-public class Material implements Serializable {
+@Inheritance
+public abstract class SheetMaterial {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private MaterialType materialType;
@@ -25,13 +22,12 @@ public class Material implements Serializable {
     @Min(value = 0)
     private int materialsCount;
 
-    public Material(MaterialType materialType, Color color, @Min(value = 0) int materialsCount) {
-        this.materialType = materialType;
+    public SheetMaterial(Color color, @Min(value = 0) int materialsCount) {
         this.color = color;
         this.materialsCount = materialsCount;
     }
 
-    public Material() {
+    public SheetMaterial() {
     }
 
     public int getId() {
@@ -80,7 +76,7 @@ public class Material implements Serializable {
 
         if (o == null || getClass() != o.getClass()) return false;
 
-        Material material = (Material) o;
+        SheetMaterial material = (SheetMaterial) o;
 
         if (id == material.id) {
             return true;
@@ -92,5 +88,15 @@ public class Material implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(id, materialType, color);
+    }
+
+    @Override
+    public String toString() {
+        return "SheetMaterial{" +
+                "id=" + id +
+                ", materialType=" + materialType +
+                ", color=" + color +
+                ", materialsCount=" + materialsCount +
+                '}';
     }
 }

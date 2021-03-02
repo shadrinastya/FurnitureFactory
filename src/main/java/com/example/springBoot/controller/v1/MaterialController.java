@@ -1,6 +1,6 @@
-package com.example.springBoot.controller;
+/*package com.example.springBoot.controller;
 
-import com.example.springBoot.model.Material;
+import com.example.springBoot.model.v1.Material;
 import com.example.springBoot.service.MaterialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,11 +33,10 @@ public class MaterialController {
 
     //отдельная страница формы, куда вбиваем данные
     @GetMapping ("/material-create")
-    public String createMaterialForm(Material material){
-        material.setMaterialsCount(1);
+    public String createMaterialForm(Model model, Material material){
+        model.addAttribute("material", material);
         return "material/material-create";
     }
-
 
     //BindingResult содержит ошибки валидации, его указываем после @Valid
     @PostMapping("/material-create")
@@ -73,4 +72,4 @@ public class MaterialController {
         materialService.update(material);
         return "redirect:/materials";
     }
-}
+}*/

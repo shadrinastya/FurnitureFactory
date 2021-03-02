@@ -1,21 +1,21 @@
 package com.example.springBoot.model;
 
 
-import com.example.springBoot.model.enumClasses.Color;
 import com.example.springBoot.model.enumClasses.MaterialType;
+import com.example.springBoot.model.enumClasses.Color;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Min;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-public class Material {
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
+public class Material implements Serializable {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private MaterialType materialType;
@@ -25,10 +25,9 @@ public class Material {
     @Min(value = 0)
     private int materialsCount;
 
-    public Material(String color, int materialsCount, String materialType) {
-        this.color = Color.valueOf(color);
+    public Material(Color color, @Min(value = 0) int materialsCount) {
+        this.color = color;
         this.materialsCount = materialsCount;
-        this.materialType = MaterialType.valueOf(materialType);
     }
 
     public Material() {
