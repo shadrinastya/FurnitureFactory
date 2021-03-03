@@ -1,7 +1,8 @@
-package com.example.springBoot.controller;
+package com.example.springBoot.controller.sheetMaterial;
 
 import com.example.springBoot.model.material.Chipboard;
-import com.example.springBoot.service.ChipboardServiceImpl;
+import com.example.springBoot.service.sheetMaterial.ChipboardServiceImpl;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

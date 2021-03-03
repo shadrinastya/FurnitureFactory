@@ -1,4 +1,4 @@
-package com.example.springBoot.model;
+package com.example.springBoot.model.v1;
 
 
 import com.example.springBoot.model.enumClasses.MaterialType;

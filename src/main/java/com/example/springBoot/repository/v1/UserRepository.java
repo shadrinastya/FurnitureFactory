@@ -1,4 +1,4 @@
-package com.example.springBoot.repository;
+package com.example.springBoot.repository.v1;
 
 import com.example.springBoot.model.v1.User;
 import org.springframework.data.jpa.repository.JpaRepository;

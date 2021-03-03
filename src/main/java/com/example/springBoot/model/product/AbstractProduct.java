@@ -2,7 +2,6 @@ package com.example.springBoot.model.product;
 
 import com.example.springBoot.model.enumClasses.Color;
 import com.example.springBoot.model.enumClasses.ProductType;
-import com.example.springBoot.model.material.SheetMaterial;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;

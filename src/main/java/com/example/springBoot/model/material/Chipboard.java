@@ -1,4 +1,4 @@
-package com.example.springBoot.model;
+package com.example.springBoot.model.material;
 
 import com.example.springBoot.model.enumClasses.Color;
 import com.example.springBoot.model.enumClasses.MaterialType;
@@ -10,7 +10,7 @@ import javax.persistence.Entity;
 @Entity
 @DiscriminatorValue ("chipboard")
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
-public class Chipboard extends SheetMaterial{
+public class Chipboard extends SheetMaterial {
 
     public Chipboard(Color color, int materialsCount) {
         super(color, materialsCount);
