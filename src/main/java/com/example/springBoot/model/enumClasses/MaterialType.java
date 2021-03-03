@@ -4,5 +4,6 @@ public enum MaterialType {
     MDF,
     CHIPBOARD,
     WOOD,
-    GLASS;
+    GLASS,
+
 }

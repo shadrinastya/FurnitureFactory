@@ -2,6 +2,7 @@ package com.example.springBoot.controller.sheetMaterial;
 
 import com.example.springBoot.model.material.SheetMaterial;
 import com.example.springBoot.service.sheetMaterial.SheetMaterialService;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 public abstract class AbstractSheetMaterialRestController<T extends SheetMaterial, S extends SheetMaterialService<T>> {
+
+    //json {"color":"GREEN","materialsCount":18}
 
     private S service;
 
@@ -18,7 +21,6 @@ public abstract class AbstractSheetMaterialRestController<T extends SheetMateria
 
     @GetMapping
     public ResponseEntity<List<T>> getAll(){
-
         List<T> materials = service.findAll();
 
         if (materials.isEmpty()){
@@ -30,7 +32,6 @@ public abstract class AbstractSheetMaterialRestController<T extends SheetMateria
 
     @GetMapping("{id}")
     public ResponseEntity<T> getMaterial (@PathVariable Integer id){
-
         if (id == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }

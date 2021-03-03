@@ -5,6 +5,8 @@ import com.example.springBoot.model.material.Chipboard;
 import com.example.springBoot.model.material.Mdf;
 import com.example.springBoot.model.material.SheetMaterial;
 import com.example.springBoot.model.enumClasses.MaterialType;
+import com.example.springBoot.repository.sheetMaterial.SheetMaterialRepository;
+
 import org.springframework.stereotype.Service;
 
 import javax.validation.constraints.NotEmpty;
@@ -15,12 +17,14 @@ import java.util.List;
 public class CommonSheetMaterialServiceImpl implements SheetMaterialService<SheetMaterial> {
 
     private final MdfServiceImpl mdfService;
-
     private final ChipboardServiceImpl chipboardService;
+    private final SheetMaterialRepository sheetMaterialRepository;
 
-    public CommonSheetMaterialServiceImpl(MdfServiceImpl mdfService, ChipboardServiceImpl chipboardService) {
+    public CommonSheetMaterialServiceImpl(MdfServiceImpl mdfService, ChipboardServiceImpl chipboardService,
+            SheetMaterialRepository sheetMaterialRepository) {
         this.mdfService = mdfService;
         this.chipboardService = chipboardService;
+        this.sheetMaterialRepository = sheetMaterialRepository;
     }
 
     @Override
@@ -49,15 +53,11 @@ public class CommonSheetMaterialServiceImpl implements SheetMaterialService<Shee
 
     @Override
     public List<SheetMaterial> findAll() {
-        List<SheetMaterial> sheetMaterials = new ArrayList<>();
-        sheetMaterials.addAll(mdfService.findAll());
-        sheetMaterials.addAll(chipboardService.findAll());
-        return sheetMaterials;
+        return sheetMaterialRepository.findAll();
     }
 
     @Override
     public SheetMaterial findById(int id) {
-
         List<SheetMaterial> materials = findAll();
         SheetMaterial material = materials.stream()
                 .filter(m -> m.getId() == id)
