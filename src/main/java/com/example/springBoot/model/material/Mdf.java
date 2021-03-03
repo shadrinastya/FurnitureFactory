@@ -6,7 +6,6 @@ import com.example.springBoot.model.enumClasses.MaterialType;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import javax.validation.constraints.Min;
 
 @Entity
 @DiscriminatorValue("mdf")

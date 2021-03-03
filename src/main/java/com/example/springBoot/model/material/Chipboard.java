@@ -10,7 +10,7 @@ import javax.persistence.Entity;
 @Entity
 @DiscriminatorValue ("chipboard")
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
-public class Chipboard extends SheetMaterial {
+public class Chipboard extends SheetMaterial{
 
     public Chipboard(Color color, int materialsCount) {
         super(color, materialsCount);

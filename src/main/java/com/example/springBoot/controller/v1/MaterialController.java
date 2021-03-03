@@ -1,7 +1,7 @@
 /*package com.example.springBoot.controller;
 
 import com.example.springBoot.model.v1.Material;
-import com.example.springBoot.service.MaterialService;
+import com.example.springBoot.service.v1.MaterialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

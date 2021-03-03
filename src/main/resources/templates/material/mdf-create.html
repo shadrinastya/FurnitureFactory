@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Create mdf</title>
+</head>
+<body>
+
+<form action="#"  th:action="@{/mdf-create}" th:object="${mdf}" method="post">
+
+
+    <label>Type</label>
+    <input readonly type="text" th:field="${mdf.materialType}" id="materialType" placeholder="materialType">
+    <br/>
+
+
+    <br/>
+
+    <label>Color</label>
+    <select th:field="*{color}">
+        <option th:each="color : ${T(com.example.springBoot.model.enumClasses.Color).values()}"
+                th:value="${color}"
+                th:text="${color}">Choose the color material</option>
+    </select>
+
+    <br/>
+
+    <label for="materialsCount">Count</label>
+    <input type="number" min="0" th:field="*{materialsCount}" id="materialsCount" placeholder="materialsCount">
+    <div style="color:red" th:if="${#fields.hasErrors('materialsCount')}" th:errors="*{materialsCount}">we won't see of this text</div>
+
+    <br/>
+
+    <input type="submit" value="Add mdf">
+</form>
+</body>
+</html>

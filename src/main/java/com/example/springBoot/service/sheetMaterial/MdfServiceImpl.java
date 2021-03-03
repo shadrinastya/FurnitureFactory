@@ -1,15 +1,15 @@
+
 package com.example.springBoot.service.sheetMaterial;
 
 import com.example.springBoot.model.material.Mdf;
-import com.example.springBoot.repository.sheetMaterial.MdfBaseRepository;
-
+import com.example.springBoot.repository.sheetMaterial.MdfRepository;
 import org.springframework.stereotype.Service;
 
 
 @Service
-public class MdfServiceImpl extends SheetMaterialServiceImpl<Mdf, MdfBaseRepository> {
+public class MdfServiceImpl extends SheetMaterialServiceImpl<Mdf, MdfRepository> {
 
-    public MdfServiceImpl(MdfBaseRepository repository) {
+    public MdfServiceImpl(MdfRepository repository) {
         super(repository);
     }
 }

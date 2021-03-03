@@ -5,11 +5,10 @@ import com.example.springBoot.model.enumClasses.ProductType;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
-import java.util.List;
 
 @Entity
 @Inheritance
-public abstract class AbstractProduct {
+public abstract class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,12 +21,12 @@ public abstract class AbstractProduct {
     @Min(value = 0)
     private int productCount;
 
-    public AbstractProduct(Color color, @Min(value = 0) int productCount) {
+    public Product(Color color, @Min(value = 0) int productCount) {
         this.color = color;
         this.productCount = productCount;
     }
 
-    public AbstractProduct() {
+    public Product() {
     }
 
     public int getId() {
@@ -62,4 +61,13 @@ public abstract class AbstractProduct {
         this.productCount = materialsCount;
     }
 
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", productType=" + productType +
+                ", color=" + color +
+                ", productCount=" + productCount +
+                '}';
+    }
 }
