@@ -2,8 +2,6 @@ package com.example.springBoot.service.sheetMaterial;
 
 import com.example.springBoot.model.material.SheetMaterial;
 import com.example.springBoot.repository.sheetMaterial.SheetMaterialBaseRepository;
-import com.example.springBoot.repository.sheetMaterial.SheetMaterialRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
@@ -33,7 +31,7 @@ public class SheetMaterialServiceImpl <T extends SheetMaterial, R extends SheetM
 
     @Override
     public void update(T newMaterial) {
-        save(newMaterial);
+        repository.save(newMaterial);
     }
 
     @Override

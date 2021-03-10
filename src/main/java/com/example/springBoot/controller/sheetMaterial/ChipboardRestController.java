@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("chipboard")
-public class ChipboardRestRestController extends AbstractSheetMaterialRestController<Chipboard, ChipboardServiceImpl> {
+@RequestMapping("chipboards")
+public class ChipboardRestController extends AbstractSheetMaterialRestController<Chipboard, ChipboardServiceImpl> {
 
-    public ChipboardRestRestController(ChipboardServiceImpl service) {
+    public ChipboardRestController(ChipboardServiceImpl service) {
         super(service);
     }
 }

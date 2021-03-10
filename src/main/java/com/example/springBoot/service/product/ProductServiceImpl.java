@@ -35,8 +35,8 @@ public class ProductServiceImpl<T extends Product, R extends ProductRepository<T
 
     @Override
     public void create(ProductType type, Color color, int productCount) {
-        //исправить setProductSchema, чтобы при создании 3х предметов - удалялись материалы для 3 продуктов
-        List<SheetMaterial> schema = ProductSchema.setProductSchema(type, color);
+
+        List<SheetMaterial> schema = ProductSchema.setProductSchema(type, color, productCount);
         boolean b = service.findAllByProductSchema(schema); //всего ли хватает
 
         if (!b){

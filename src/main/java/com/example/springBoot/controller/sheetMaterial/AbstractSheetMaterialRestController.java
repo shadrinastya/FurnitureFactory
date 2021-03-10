@@ -11,8 +11,6 @@ import java.util.List;
 
 public abstract class AbstractSheetMaterialRestController<T extends SheetMaterial, S extends SheetMaterialService<T>> {
 
-    //json {"color":"GREEN","materialsCount":18}
-
     private S service;
 
     public AbstractSheetMaterialRestController(S service) {
@@ -72,7 +70,7 @@ public abstract class AbstractSheetMaterialRestController<T extends SheetMateria
         return new ResponseEntity<>(material, HttpStatus.OK);
     }
 
-    @DeleteMapping
+    @DeleteMapping("{id}")
     public ResponseEntity<T> deleteMaterial (@PathVariable Integer id) {
 
         if (id==null){

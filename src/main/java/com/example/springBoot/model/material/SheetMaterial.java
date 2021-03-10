@@ -2,6 +2,9 @@ package com.example.springBoot.model.material;
 
 import com.example.springBoot.model.enumClasses.Color;
 import com.example.springBoot.model.enumClasses.MaterialType;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
@@ -9,6 +12,20 @@ import java.util.Objects;
 
 @Entity
 @Inheritance
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
+
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "materialType")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Mdf.class, name = "MDF"),
+
+        @JsonSubTypes.Type(value = Chipboard.class, name = "CHIPBOARD"),
+
+        @JsonSubTypes.Type(value = Glass.class, name = "GLASS"),
+
+        @JsonSubTypes.Type(value = Wood.class, name = "WOOD"),}
+)
+
+
 public abstract class SheetMaterial {
 
     @Id
@@ -80,7 +97,7 @@ public abstract class SheetMaterial {
 
         if (id == material.id) {
             return true;
-        } else if (materialType==material.materialType && color==material.color) {
+        } else if (materialType == material.materialType && color == material.color) {
             return true;
         } else return false;
     }

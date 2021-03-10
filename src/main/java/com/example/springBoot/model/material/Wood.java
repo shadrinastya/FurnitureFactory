@@ -1,24 +1,23 @@
 package com.example.springBoot.model.material;
 
-
 import com.example.springBoot.model.enumClasses.Color;
 import com.example.springBoot.model.enumClasses.MaterialType;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import javax.persistence.*;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 
 @Entity
-@DiscriminatorValue("mdf")
+@DiscriminatorValue("wood")
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
-public class Mdf extends SheetMaterial {
+public class Wood extends SheetMaterial {
 
-    public Mdf(Color color, int materialsCount) {
+    public Wood(Color color, int materialsCount) {
         super(color, materialsCount);
-        setMaterialType(MaterialType.MDF);
+        setMaterialType(MaterialType.WOOD);
     }
-
-    public Mdf(){
-        setMaterialType(MaterialType.MDF);
+    public Wood(){
+        setMaterialType(MaterialType.WOOD);
     };
 
 

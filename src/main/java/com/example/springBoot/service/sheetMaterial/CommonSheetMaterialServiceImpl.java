@@ -1,42 +1,83 @@
 package com.example.springBoot.service.sheetMaterial;
 
-import com.example.springBoot.model.enumClasses.Color;
-import com.example.springBoot.model.material.Chipboard;
-import com.example.springBoot.model.material.Mdf;
 import com.example.springBoot.model.material.SheetMaterial;
-import com.example.springBoot.model.enumClasses.MaterialType;
 import com.example.springBoot.repository.sheetMaterial.SheetMaterialRepository;
-
 import org.springframework.stereotype.Service;
 
-import javax.validation.constraints.NotEmpty;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class CommonSheetMaterialServiceImpl implements SheetMaterialService<SheetMaterial> {
+public class CommonSheetMaterialServiceImpl extends SheetMaterialServiceImpl<SheetMaterial, SheetMaterialRepository> {
+    public CommonSheetMaterialServiceImpl(SheetMaterialRepository repository) {
+        super(repository);
+    }
 
-    private final MdfServiceImpl mdfService;
+    public boolean findAllByProductSchema(List<SheetMaterial> schema) {
+
+        for (SheetMaterial material : schema) {
+            SheetMaterial sheetMaterial = findByMaterial(material);
+            if (sheetMaterial == null) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void deleteAllByProductSchema(List<SheetMaterial> schema) {
+        if (findAllByProductSchema(schema)) {
+            for (SheetMaterial material : schema) {
+
+                SheetMaterial newMaterial = findByMaterial(material);
+
+                int materialsCount = newMaterial.getMaterialsCount() - material.getMaterialsCount();
+
+                newMaterial.setMaterialsCount(materialsCount);
+
+                update(newMaterial);
+            }
+        }
+    }
+}
+
+/*    private final MdfServiceImpl mdfService;
     private final ChipboardServiceImpl chipboardService;
-    private final SheetMaterialRepository sheetMaterialRepository;
+    private final WoodServiceImpl woodService;
+    private final GlassServiceImpl glassService;*/
 
-    public CommonSheetMaterialServiceImpl(MdfServiceImpl mdfService, ChipboardServiceImpl chipboardService,
-            SheetMaterialRepository sheetMaterialRepository) {
+/*    private final SheetMaterialRepository sheetMaterialRepository;
+
+    public CommonSheetMaterialServiceImpl(SheetMaterialRepository sheetMaterialRepository) {
+        this.sheetMaterialRepository = sheetMaterialRepository;
+    }*/
+
+    /* public CommonSheetMaterialServiceImpl(MdfServiceImpl mdfService, ChipboardServiceImpl chipboardService, WoodServiceImpl woodService, GlassServiceImpl glassService, SheetMaterialRepository sheetMaterialRepository) {
         this.mdfService = mdfService;
         this.chipboardService = chipboardService;
+        this.woodService = woodService;
+        this.glassService = glassService;
         this.sheetMaterialRepository = sheetMaterialRepository;
     }
 
     @Override
     public void save(SheetMaterial newMaterial) {
-        MaterialType type = newMaterial.getMaterialType();
+        super.;
+
+*//*        MaterialType type = newMaterial.getMaterialType();
+
         switch (type) {
             case MDF:
                 mdfService.save((Mdf) newMaterial);
                 break;
             case CHIPBOARD:
                 chipboardService.save((Chipboard) newMaterial);
-        }
+                break;
+            case GLASS:
+                glassService.save((Glass) newMaterial);
+                break;
+            case WOOD:
+                woodService.save((Wood) newMaterial);
+                break;
+        }*//*
     }
 
     @Override
@@ -97,20 +138,20 @@ public class CommonSheetMaterialServiceImpl implements SheetMaterialService<Shee
         }
     }
 
-    public boolean findAllByProductSchema (List<SheetMaterial> schema) {
+    public boolean findAllByProductSchema(List<SheetMaterial> schema) {
 
-        for (SheetMaterial material: schema){
+        for (SheetMaterial material : schema) {
             SheetMaterial sheetMaterial = findByMaterial(material);
-            if (sheetMaterial==null) {
+            if (sheetMaterial == null) {
                 return false;
             }
         }
         return true;
     }
 
-    public void deleteAllByProductSchema (List<SheetMaterial> schema) {
-        if (findAllByProductSchema(schema)){
-            for (SheetMaterial material: schema){
+    public void deleteAllByProductSchema(List<SheetMaterial> schema) {
+        if (findAllByProductSchema(schema)) {
+            for (SheetMaterial material : schema) {
 
                 SheetMaterial newMaterial = findByMaterial(material);
 
@@ -122,4 +163,5 @@ public class CommonSheetMaterialServiceImpl implements SheetMaterialService<Shee
             }
         }
     }
-}
+    }
+}*/
